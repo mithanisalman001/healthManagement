@@ -41,7 +41,7 @@ export default class RegisterScreen extends React.Component{
                         style={styles.input} 
                         autoCapitalize="none"
                         onChangeText={name => this.setState({ name })}
-                        value = {this.state.email}
+                        value = {this.state.name}
                         ></TextInput> 
                     </View>
 

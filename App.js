@@ -31,25 +31,25 @@ const AppTabNavigator = createBottomTabNavigator(
     Home: {
       screen: HomeScreen,
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-home" size={32} color={tintColor}/>
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-home" size={24} color={tintColor}/>
       }
     },
     Message: {
       screen: MessageScreen,
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-chatboxes" size={32} color={tintColor}/>
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-chatboxes" size={24} color={tintColor}/>
       }
     },
     Notification: {
       screen: NotficationScreen,
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-notifications" size={32} color={tintColor}/>
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-notifications" size={24} color={tintColor}/>
       }
     },
     Profile: {
       screen: ProfileScreen,
       navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-person" size={32} color={tintColor}/>
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-person" size={24} color={tintColor}/>
       }
     }
 
@@ -57,7 +57,7 @@ const AppTabNavigator = createBottomTabNavigator(
   {
     tabBarOptions:{
       activeTintColor: "#E9446A",
-      inactiveTintColor: "#B8BBC4"
+      inactiveTintColor: "#111"
     }
   }
 )

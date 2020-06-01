@@ -1,62 +1,65 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import * as firebase from 'firebase';
-import { Item, Input, Label, Button , Content, ListItem, List} from 'native-base';
+import { Item, Input, Label, Button , Content, ListItem, } from 'native-base';
 import Constants from 'expo-constants'
   
 export default class HomeScreen extends React.Component{
   state= {
-    text :"",
-    mylist: []
+    BPM: "",
+    Humidity:"",
+    Temperature: "",
+    displayName: "",
+    errorMessage: ""
   }
   componentDidMount(){
-    const myitems = firebase.database().ref("mywishes");
-    myitems.on("value", datasnap=>{
-      //console.log(Object.values(datasnap.val()))
-      this.setState({mylist: Object.values(datasnap.val()) })
+    const {displayName} = firebase.auth().currentUser
+    this.setState({ displayName });
+
+
+    const BPMval = firebase.database().ref("/BPM");
+    BPMval.on("value", datasnap=>{
+      this.setState({ BPM: datasnap.val()})
     })
-  }
-  saveitem(){
-    //console.log(this.state.text)
-    const mywishes = firebase.database().ref("mywishes");
-    mywishes.push().set({
-      text:this.state.text,
-      time:Date.now()
+  
+
+    const Humidityval = firebase.database().ref("/Humidity");
+    Humidityval.on("value", datasnap=>{
+    this.setState({ Humidity: datasnap.val()})
+  })
+
+
+    const Temperatureval = firebase.database().ref("/Temperature");
+    Temperatureval.on("value", datasnap=>{
+      this.setState({ Temperature: datasnap.val()})
+      console.log(this.state.Temperature)
     })
-    this.setState({text: ""})
+    }
+  renderElement=()=>{
+    if (this.state.BPM>=120){
+      this.setState({ errorMessage: "It's an emergency"})
+    }
   }
   render(){
-    console.log(this.state)
-    const myitems = this.state.mylist.map(item =>{
-      return(
-        <ListItem style={{justifyContent:"space-between"}} key={item.time}>
-          <Text>{item.text}</Text>
-          <Text>{new Date(item.time).toDateString()}</Text>
-        </ListItem>
-      )
-    })
   return (
     <View style={styles.container}>
-      <Item floatingLabel>
-        <Label>add Items</Label>
-          <Input 
-          value= {this.state.text}
-          onChangeText = {(text)=>this.setState({text})}
-          />
-      </Item>
-      <View style={styles.btnContainer}>
-        <Button rounded 
-        onPress={()=> this.saveitem()}
-        style={styles.mybtn}>
-          <Text style={styles.text}>Add</Text>
-        </Button>
-        <Button rounded danger style={styles.mybtn}>
-          <Text style={styles.text}>Delete All</Text>
-        </Button>
+      <Image style={styles.circle} source={require('../assets/ecg.png')} /> 
+      <Text style={{fontWeight:"800",fontSize:40,marginTop:32, textTransform:"uppercase"}}>USER: {this.state.displayName}</Text>
+      <Text style={{fontWeight:"600",fontSize:35,marginTop:32, textTransform:"uppercase"}}>Results</Text>
+      <View style={{marginTop:32}}>
+        <ListItem>
+        {this.state.BPM >= 120 ? this.props.navigation.navigate("Message") && <Text style={{color:"#fa1302",fontWeight:"500",fontSize:20}}>This is emergency situation contact someone now !!</Text> : null}
+        </ListItem>
+        <ListItem>
+          <Text style={{fontWeight:"500",fontSize:30}}>BPM: {this.state.BPM}</Text>
+        </ListItem>
+        <ListItem>
+          <Text style={{fontWeight:"500",fontSize:30}}>Humidity: {this.state.Humidity}</Text>
+        </ListItem>
+        <ListItem>
+          <Text style={{fontWeight:"500",fontSize:30}}>Temperature: {this.state.Temperature}</Text>
+        </ListItem>
       </View>
-      <List>
-        {myitems}
-      </List>
     </View>
   );
   }
@@ -65,9 +68,15 @@ export default class HomeScreen extends React.Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     padding: Constants.statusBarHeight
     },
+    circle:{
+      width: 390,
+      height: 300,
+      position:"absolute",  
+      top:250,
+      opacity: 0.2
+    }, 
     btnContainer: {
       flexDirection: "row",
       padding: 20,

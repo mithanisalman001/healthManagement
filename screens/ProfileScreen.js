@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import * as firebase from 'firebase'
-
+import Constants from 'expo-constants'
 export default class HomeScreen extends React.Component{
     state = {
         email: "",
@@ -21,11 +21,14 @@ export default class HomeScreen extends React.Component{
     render(){
         return(
             <View style={styles.container}>
+                <Image style={styles.circle} source={require('../assets/ecg.png')} /> 
+                <View style={{alignItems:"center",justifyContent:"center"}}>
                 <Text>Hi! {this.state.email}</Text>
-                <Text>Hello Mr. {this.state.displayName}</Text>
+                <Text style={styles.inputTitle}>Hello Mr. {this.state.displayName}</Text>
                 <TouchableOpacity style={styles.button} onPress={this.signOutUser}>
                 <Text style={{color: "#FFF", fontWeight:"500"}}>Log Out</Text>
                 </TouchableOpacity>
+                </View>
             </View>
         )
     }
@@ -34,8 +37,15 @@ export default class HomeScreen extends React.Component{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "center",
-        justifyContent:"center"
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    circle:{
+      width: 390,
+      height: 300,
+      position:"absolute",  
+      top:250,
+      opacity: 0.2
     },
     button:{
         marginTop: 32,
@@ -47,5 +57,10 @@ const styles = StyleSheet.create({
         height: 52,
         alignItems: "center",
         justifyContent: "center"
-    }
+    },
+    inputTitle:{
+        color: "#8A8F9E",
+        fontSize: 20,
+        textTransform: "uppercase"
+    },
 })
