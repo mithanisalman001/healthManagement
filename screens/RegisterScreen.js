@@ -28,7 +28,7 @@ export default class RegisterScreen extends React.Component{
             <View style={styles.container}>
                 <StatusBar barStyle="light-content"></StatusBar>
                 <Text style={styles.greeting}>
-                    { `Hello\n Sign Up to get started.`}
+                    { `Sign Up to get started.`}
                 </Text>
                 <View style={styles.errorMessage}>
                     {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
@@ -36,34 +36,37 @@ export default class RegisterScreen extends React.Component{
                 
                 <View style={styles.form}>
                      <View>
-                        <Text style={styles.inputTitle}>Name</Text>
                         <TextInput 
                         style={styles.input} 
                         autoCapitalize="none"
                         onChangeText={name => this.setState({ name })}
                         value = {this.state.name}
+                        placeholder= "Name"
+                        placeholderTextColor="#383ed1"
                         ></TextInput> 
                     </View>
 
 
                     <View style={{ marginTop: 32}}>
-                        <Text style={styles.inputTitle}>Email Address</Text>
                         <TextInput 
                         style={styles.input} 
                         autoCapitalize="none"
                         onChangeText={email => this.setState({ email })}
                         value = {this.state.email}
+                        placeholder= "Enter your Email Address"
+                        placeholderTextColor="#383ed1"
                         ></TextInput> 
                     </View>
 
                     <View style={{marginTop: 32}}>
-                        <Text style={styles.inputTitle}>Password</Text>    
                         <TextInput 
                         style={styles.input} 
                         secureTextEntry  
                         autoCapitalize="none"
                         onChangeText={password => this.setState({ password })}
                         value={this.state.password}
+                        placeholder= "Enter your password"
+                        placeholderTextColor="#383ed1"
                         ></TextInput> 
                     </View>
                 </View>
@@ -77,7 +80,7 @@ export default class RegisterScreen extends React.Component{
                 onPress={() => this.props.navigation.navigate("Login")}
                 >
                     <Text style={{ color:"#414959", fontSize: 13 }}>
-                        Already a User? <Text style={{ fontWeight: "500", color: "#E9446A" }}>Login</Text>
+                        Already a User? <Text style={{ fontWeight: "500", color: "#383ed1" }}>Login</Text>
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -92,9 +95,10 @@ const styles = StyleSheet.create({
     },
     greeting: {
         marginTop:  32,
-        fontSize: 18,
-        fontWeight: "400",
-        textAlign: "center"
+        fontSize: 28,
+        fontWeight: "800",
+        textAlign: "center",
+        color: "#383ed1"
     },
     errorMessage:{
         height:72,
@@ -126,7 +130,7 @@ const styles = StyleSheet.create({
     },
     button:{
         marginHorizontal: 30,
-        backgroundColor: "#E9446A",
+        backgroundColor: "#383ed1",
         borderRadius: 4,
         height: 52,
         alignItems: "center",

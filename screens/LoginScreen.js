@@ -19,9 +19,9 @@ export default class LoginScreen extends React.Component{
         LayoutAnimation.easeInEaseOut();
         return(
             <View style={styles.container}>
-                <StatusBar barStyle="light-content"></StatusBar>
+                <StatusBar barStyle="dark-content"></StatusBar>
                 <Text style={styles.greeting}>
-                    { `Hello Again.\n Welcome Back.`}
+                    { `Sign In your account`}
                 </Text>
                 <View style={styles.errorMessage}>
                     {this.state.errorMessage && <Text style={styles.error}>{this.state.errorMessage}</Text>}
@@ -29,23 +29,25 @@ export default class LoginScreen extends React.Component{
                 
                 <View style={styles.form}>
                     <View>
-                        <Text style={styles.inputTitle}>Email Address</Text>
                         <TextInput 
                         style={styles.input} 
                         autoCapitalize="none"
                         onChangeText={email => this.setState({ email })}
                         value = {this.state.email}
+                        placeholder= "Enter your Email Address"
+                        placeholderTextColor="#383ed1"
                         ></TextInput> 
                     </View>
 
                     <View style={{marginTop: 32}}>
-                        <Text style={styles.inputTitle}>Password</Text>    
                         <TextInput 
                         style={styles.input} 
                         secureTextEntry  
                         autoCapitalize="none"
                         onChangeText={password => this.setState({ password })}
                         value={this.state.password}
+                        placeholder="Enter your password"
+                        placeholderTextColor="#383ed1"
                         ></TextInput> 
                     </View>
                 </View>
@@ -59,7 +61,7 @@ export default class LoginScreen extends React.Component{
                 onPress={() => this.props.navigation.navigate("Register")}
                 >
                     <Text style={{ color:"#414959", fontSize: 13 }}>
-                        New to HealthApp? <Text style={{ fontWeight: "500", color: "#E9446A" }}>Sign Up</Text>
+                        New to HealthApp? <Text style={{ fontWeight: "500", color: "#383ed1" }}>Sign Up</Text>
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -70,13 +72,15 @@ export default class LoginScreen extends React.Component{
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: "#cfcee0"
     },
     greeting: {
         marginTop:  32,
-        fontSize: 18,
-        fontWeight: "400",
-        textAlign: "center"
+        fontSize: 28,
+        fontWeight: "800",
+        textAlign: "center",
+        color: "#383ed1"
     },
     errorMessage:{
         height:72,
@@ -94,22 +98,17 @@ const styles = StyleSheet.create({
         marginBottom: 48,
         marginHorizontal: 30
     },
-    inputTitle:{
-        color: "#8A8F9E",
-        fontSize: 10,
-        textTransform: "uppercase"
-    },
     input: {
         borderBottomColor: "#8A8F9E",
         borderBottomWidth: StyleSheet.hairlineWidth,
         height: 40,
         fontSize: 15,
-        color: "#161F30"
+        color: "#383ed1"
     },
     button:{
         marginHorizontal: 30,
-        backgroundColor: "#E9446A",
-        borderRadius: 4,
+        backgroundColor: "#383ed1",
+        borderRadius: 14,
         height: 52,
         alignItems: "center",
         justifyContent: "center"

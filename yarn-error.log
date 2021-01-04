@@ -1,29 +1,29 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js install
+  /usr/local/Cellar/node/15.3.0/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js install
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 Yarn version: 
-  1.22.4
+  1.22.10
 
 Node version: 
-  12.16.2
+  15.3.0
 
 Platform: 
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@firebase/functions/-/functions-0.4.39.tgz: ESOCKETTIMEDOUT
-      at ClientRequest.<anonymous> (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:141375:19)
-      at Object.onceWrapper (events.js:416:28)
-      at ClientRequest.emit (events.js:310:20)
-      at TLSSocket.emitRequestTimeout (_http_client.js:714:9)
-      at Object.onceWrapper (events.js:416:28)
-      at TLSSocket.emit (events.js:310:20)
-      at TLSSocket.Socket._onTimeout (net.js:479:8)
-      at listOnTimeout (internal/timers.js:549:17)
-      at processTimers (internal/timers.js:492:7)
+  Error: https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141376:19)
+      at Object.onceWrapper (node:events:482:28)
+      at ClientRequest.emit (node:events:376:20)
+      at TLSSocket.emitRequestTimeout (node:_http_client:808:9)
+      at Object.onceWrapper (node:events:482:28)
+      at TLSSocket.emit (node:events:388:22)
+      at TLSSocket.Socket._onTimeout (node:net:476:8)
+      at listOnTimeout (node:internal/timers:556:17)
+      at processTimers (node:internal/timers:499:7)
 
 npm manifest: 
   {
@@ -38,23 +38,27 @@ npm manifest:
     "dependencies": {
       "@react-native-community/masked-view": "^0.1.7",
       "expo": "~37.0.3",
+      "expo-sms": "~8.1.0",
       "firebase": "^7.13.1",
+      "fontisto": "^3.0.4",
       "native-base": "^2.13.8",
       "react": "~16.9.0",
       "react-dom": "~16.9.0",
       "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.0.tar.gz",
       "react-native-gesture-handler": "^1.3.0",
+      "react-native-phone-input": "^0.2.4",
       "react-native-reanimated": "^1.8.0",
       "react-native-safe-area-context": "^0.7.3",
       "react-native-screens": "^2.4.0",
       "react-native-web": "~0.11.7",
       "react-navigation": "^4.3.6",
       "react-navigation-stack": "^2.3.10",
-      "react-navigation-tabs": "^2.8.11"
+      "react-navigation-tabs": "^2.8.11",
+      "react-phone-number-input": "^3.0.22"
     },
     "devDependencies": {
-      "babel-preset-expo": "~8.1.0",
-      "@babel/core": "^7.8.6"
+      "@babel/core": "^7.8.6",
+      "babel-preset-expo": "~8.1.0"
     },
     "private": true
   }
@@ -2829,6 +2833,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-8.1.0.tgz#a7f2ee91ba76ce3a467e7b10adaa9ca5201b226f"
     integrity sha512-QBHD+1J9+sGFnhoEGzMRchPweeEE0OJ9ehG/0l1BMRBA7qsLS9vRC1FTJ55NwjI0Kr4RTha9r6ZX1kZHT09f/w==
   
+  expo-sms@~8.1.0:
+    version "8.1.0"
+    resolved "https://registry.yarnpkg.com/expo-sms/-/expo-sms-8.1.0.tgz#a2da402129eb4e7d8632f26b47d9c81850c89144"
+    integrity sha512-nBEyDDAS6FqISqGjADjkqoCSi3Un1JSix/kxTgkTsyHforjuMM/v2omjPtout9IhUFbCg9VTe47AKCzENawOqQ==
+  
   expo-sqlite@~8.1.0:
     version "8.1.0"
     resolved "https://registry.yarnpkg.com/expo-sqlite/-/expo-sqlite-8.1.0.tgz#858eb28e1143db281de8a49c99b4a953a81d0834"
@@ -5139,6 +5148,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
     integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
   
+  react-lifecycles-compat@^3.0.4:
+    version "3.0.4"
+    resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+    integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+  
   react-native-drawer@2.5.1:
     version "2.5.1"
     resolved "https://registry.yarnpkg.com/react-native-drawer/-/react-native-drawer-2.5.1.tgz#08b9314184f48c724f1b467f8859797369798654"
@@ -5177,12 +5191,19 @@ Lockfile:
       prop-types "^15.6.2"
       react-native-iphone-x-helper "^1.0.3"
   
+  react-native-reanimated@^1.8.0:
+    version "1.8.0"
+    resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.8.0.tgz#0b5719b20c1fed9aaf8afd9a12e21c9bd46ee428"
+    integrity sha512-vGTt94lE5fsZmfMwERWFIsCr5LHsyllOESeNvlKryLgAg7h4cnJ5XSmVSy4L3qogdgFYCL6HEgY+s7tQmKXiiQ==
+    dependencies:
+      fbjs "^1.0.0"
+  
   react-native-safe-area-context@^0.7.3:
     version "0.7.3"
     resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-0.7.3.tgz#ad6bd4abbabe195332c53810e4ce5851eb21aa2a"
     integrity sha512-9Uqu1vlXPi+2cKW/CW6OnHxA76mWC4kF3wvlqzq4DY8hn37AeiXtLFs2WkxH4yXQRrnJdP6ivc65Lz+MqwRZAA==
   
-  react-native-safe-area-view@^0.14.8:
+  react-native-safe-area-view@^0.14.8, react-native-safe-area-view@^0.14.9:
     version "0.14.9"
     resolved "https://registry.yarnpkg.com/react-native-safe-area-view/-/react-native-safe-area-view-0.14.9.tgz#90ee8383037010d9a5055a97cf97e4c1da1f0c3d"
     integrity sha512-WII/ulhpVyL/qbYb7vydq7dJAfZRBcEhg4/UWt6F6nAKpLa3gAceMOxBxI914ppwSP/TdUsandFy6lkJQE0z4A==
@@ -5195,6 +5216,11 @@ Lockfile:
     integrity sha512-7GcXlaj7IIrM4l5Ub7BPTkNQJ2slHGt2bhmfWmW73NTXEv+7pjHlp+JpQO32Yn+O8UQGPFf0rsesfYUdER7ppQ==
     dependencies:
       debounce "^1.2.0"
+  
+  react-native-tab-view@^2.11.0:
+    version "2.14.0"
+    resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-2.14.0.tgz#dd801f82fdb8e92fce9688b78d13923f3a5a2b3f"
+    integrity sha512-Z7XAM3NsMB96c17e9EAveunk7SUgilXWwVUTmWI1u/+p2SeOMUOB87z+//UXrcVlD1e9BPweR73q7dq7krTzTg==
   
   react-native-vector-icons@^6.6.0:
     version "6.6.0"
@@ -5267,6 +5293,16 @@ Lockfile:
     dependencies:
       color "^3.1.2"
       react-native-iphone-x-helper "^1.2.1"
+  
+  react-navigation-tabs@^2.8.11:
+    version "2.8.12"
+    resolved "https://registry.yarnpkg.com/react-navigation-tabs/-/react-navigation-tabs-2.8.12.tgz#acce21e559150c9791578ee1b2cc0c3f73df6ce4"
+    integrity sha512-gndkGAm8fswGkzIuTHXyl0pN1wAeSkRfMqcV4WgHEb2aeQStMTXLivjMujisF7RxQz21JVkeltgZOUN/UaIC9w==
+    dependencies:
+      hoist-non-react-statics "^3.3.2"
+      react-lifecycles-compat "^3.0.4"
+      react-native-safe-area-view "^0.14.9"
+      react-native-tab-view "^2.11.0"
   
   react-navigation@^4.3.6:
     version "4.3.7"
