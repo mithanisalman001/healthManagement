@@ -61,7 +61,7 @@ export default class LoginScreen extends React.Component{
                 onPress={() => this.props.navigation.navigate("Register")}
                 >
                     <Text style={{ color:"#414959", fontSize: 13 }}>
-                        New to HealthApp? <Text style={{ fontWeight: "500", color: "#383ed1" }}>Sign Up</Text>
+                        New to Health Analyzing System? <Text style={{ fontWeight: "500", color: "#383ed1" }}>Sign Up</Text>
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -72,8 +72,7 @@ export default class LoginScreen extends React.Component{
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: "#cfcee0"
+        flex: 1
     },
     greeting: {
         marginTop:  32,

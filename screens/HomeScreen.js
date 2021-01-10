@@ -7,7 +7,7 @@ import Constants from 'expo-constants'
 export default class HomeScreen extends React.Component{
   state= {
     BPM: "",
-    Humidity:"",
+    Oxygen:"",
     Temperature: "",
     displayName: "",
     errorMessage: ""
@@ -23,13 +23,13 @@ export default class HomeScreen extends React.Component{
     })
   
 
-    const Humidityval = firebase.database().ref("/Humidity");
+    const Humidityval = firebase.database().ref("/SPO2");
     Humidityval.on("value", datasnap=>{
     this.setState({ Humidity: datasnap.val()})
   })
 
 
-    const Temperatureval = firebase.database().ref("/Temperature");
+    const Temperatureval = firebase.database().ref("/Temp");
     Temperatureval.on("value", datasnap=>{
       this.setState({ Temperature: datasnap.val()})
       console.log(this.state.Temperature)
@@ -43,21 +43,20 @@ export default class HomeScreen extends React.Component{
   render(){
   return (
     <View style={styles.container}>
-      <Image style={styles.circle} source={require('../assets/ecg.png')} /> 
-      <Text style={{fontWeight:"800",fontSize:40,marginTop:32, textTransform:"uppercase"}}>USER: {this.state.displayName}</Text>
-      <Text style={{fontWeight:"600",fontSize:35,marginTop:32, textTransform:"uppercase"}}>Results</Text>
+      <Text style={{fontWeight:"800",fontSize:35,marginTop:32, textTransform:"uppercase"}}>User: {this.state.displayName}</Text>
+      <Text style={{fontWeight:"600",fontSize:28,marginTop:32, textTransform:"uppercase"}}>Real time Results</Text>
       <View style={{marginTop:32}}>
         <ListItem>
         {this.state.BPM >= 120 ? this.props.navigation.navigate("Message") && <Text style={{color:"#fa1302",fontWeight:"500",fontSize:20}}>This is emergency situation contact someone now !!</Text> : null}
         </ListItem>
         <ListItem>
-          <Text style={{fontWeight:"500",fontSize:30}}>BPM: {this.state.BPM}</Text>
+          <Text style={{fontWeight:"500",fontSize:25}}>BPM: {this.state.BPM}</Text>
         </ListItem>
         <ListItem>
-          <Text style={{fontWeight:"500",fontSize:30}}>Humidity: {this.state.Humidity}</Text>
+          <Text style={{fontWeight:"500",fontSize:25}}>Oxygen: {this.state.Humidity}</Text>
         </ListItem>
         <ListItem>
-          <Text style={{fontWeight:"500",fontSize:30}}>Temperature: {this.state.Temperature}</Text>
+          <Text style={{fontWeight:"500",fontSize:25}}>Temperature: {this.state.Temperature}</Text>
         </ListItem>
       </View>
     </View>

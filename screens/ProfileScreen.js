@@ -21,9 +21,8 @@ export default class HomeScreen extends React.Component{
     render(){
         return(
             <View style={styles.container}>
-                <Image style={styles.circle} source={require('../assets/ecg.png')} /> 
                 <View style={{alignItems:"center",justifyContent:"center"}}>
-                <Text>Hi! {this.state.email}</Text>
+                <Text style={styles.inputTitle}>Hi! {this.state.email}</Text>
                 <Text style={styles.inputTitle}>Hello Mr. {this.state.displayName}</Text>
                 <TouchableOpacity style={styles.button} onPress={this.signOutUser}>
                 <Text style={{color: "#FFF", fontWeight:"500"}}>Log Out</Text>
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
         width: 123,
         marginTop:40,
         marginHorizontal: 30,
-        backgroundColor: "#E9446A",
+        backgroundColor: "#383ed1",
         borderRadius: 4,
         height: 52,
         alignItems: "center",
@@ -61,6 +60,7 @@ const styles = StyleSheet.create({
     inputTitle:{
         color: "#8A8F9E",
         fontSize: 20,
+        fontWeight:"500",
         textTransform: "uppercase"
     },
 })

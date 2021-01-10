@@ -14,7 +14,6 @@ export default class MessageScreen extends React.Component{
     render(){
         return(
             <View style={styles.container}>
-                <Image style={styles.circle} source={require('../assets/ecg.png')} />
                 <Text style={styles.warningMessage}>If you are seeing this screen automatically then there maybe a emergency. Conatct Emergency Contact</Text> 
                 <StatusBar barStyle="light-content"></StatusBar>
                 <View style={styles.form}>
@@ -57,6 +56,7 @@ const styles = StyleSheet.create({
       },
     warningMessage: {
         color: "#fa1302",
+        marginLeft:30,
         fontSize: 15,
         textTransform: "uppercase",
         fontWeight:"400"
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         width: 123,
         marginTop:40,
         marginHorizontal: 30,
-        backgroundColor: "#E9446A",
+        backgroundColor: "#383ed1",
         borderRadius: 4,
         height: 52,
         alignItems: "center",
